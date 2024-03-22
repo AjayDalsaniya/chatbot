@@ -1,0 +1,88 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "openai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "openai",
+        "description": "openai",
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "get_api_response",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_api_response(prompt: str) -> str | None:\n    text: str | None = None\n    try:\n        response = openai.ChatCompletion.create(\n            model=\"gpt-3.5-turbo\",\n            messages=[\n                {\"role\": \"user\", \"content\": prompt}\n            ]\n        )\n        text = response.choices[0].message[\"content\"]",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/get_bot_response', methods=['POST'])\ndef get_bot_response():\n    message = request.json['message']\n    prompt = f'User: {message}\\nAI:'\n    bot_response = get_api_response(prompt)\n    return jsonify({'response': bot_response})\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "get_bot_response",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_bot_response():\n    message = request.json['message']\n    prompt = f'User: {message}\\nAI:'\n    bot_response = get_api_response(prompt)\n    return jsonify({'response': bot_response})\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = Flask(__name__)\nopenai.api_key = \"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\"\ndef get_api_response(prompt: str) -> str | None:\n    text: str | None = None\n    try:\n        response = openai.ChatCompletion.create(\n            model=\"gpt-3.5-turbo\",\n            messages=[\n                {\"role\": \"user\", \"content\": prompt}\n            ]",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "openai.api_key",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "openai.api_key = \"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\"\ndef get_api_response(prompt: str) -> str | None:\n    text: str | None = None\n    try:\n        response = openai.ChatCompletion.create(\n            model=\"gpt-3.5-turbo\",\n            messages=[\n                {\"role\": \"user\", \"content\": prompt}\n            ]\n        )",
+        "detail": "main",
+        "documentation": {}
+    }
+]
